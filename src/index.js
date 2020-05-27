@@ -17,8 +17,12 @@ const User          = require('./models/user')
 
 // App Variables
 require('dotenv').config()
-const upload    = multer({ dest: 'uploads/' })
+const upload    = multer({ dest: '/uploads/' })
 const port      = process.env.PORT || 3000
+
+// Paths for Express Config
+const publicDirPath = path.join(__dirname, '../public')
+const viewsPath     = path.join(__dirname, '../templates/views')
 
 // DB Initialization
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/txt_app', {
@@ -30,7 +34,8 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/txt_app', {
 
 // App Config
 app.set('view engine', 'ejs')
-app.use('/public', express.static(path.join(__dirname, 'public')))
+app.set('views', viewsPath)
+app.use(express.static(publicDirPath))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.use(flash())
@@ -40,7 +45,7 @@ app.use(session({
     saveUninitialized: false
 }))
 
-// Passport
+// Passport Config
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));

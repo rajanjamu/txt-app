@@ -1,0 +1,13 @@
+.pusher {
+    padding-top: 55px;
+}
+
+.ui.centered.grid .column {
+    max-width: 450px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.ui.centered.grid p {
+    text-align: center;
+}

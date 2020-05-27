@@ -4,7 +4,7 @@
   "description": "Maruti Statements Text File Analysis",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon src/index.js"
   },
   "author": "Rajan Gupta",
   "license": "ISC",
